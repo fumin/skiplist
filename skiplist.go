@@ -1,4 +1,4 @@
-// Package skiplist is an implementation of the Skiplist data structure
+// Package skiplist is an implementation of the Skiplist data structure.
 // Most of the implementation is copied from Redis https://github.com/antirez/redis.
 // In addition, this implementation contains an optimized function SampleInRange
 // that randomly samples from a given range. According to the benchmarks,
@@ -11,6 +11,8 @@ import (
   "sort"
 )
 
+// The Ordered interface should be implemented by types that wish to added into
+// a skiplist.
 type Ordered interface {
   // Less reports whether we are *strictly* less than other.
   Less(other Ordered) bool
@@ -33,9 +35,11 @@ type Skiplist struct {
   level int
 }
 
+// RangeSpec is an interval with information about the inclusiveness of its
+// boundaries.
 type RangeSpec struct {
   Min, Max Ordered
-  Minex, Maxex bool
+  Minex, Maxex bool // End points are excluded if Minex or Maxex is true.
 }
 
 func (spec *RangeSpec) gteMin(ordered Ordered) bool {
