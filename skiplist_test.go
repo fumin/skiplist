@@ -1,4 +1,4 @@
-package sortedset
+package skiplist
 
 import (
   "math/rand"

@@ -1,4 +1,9 @@
-package sortedset
+// Package skiplist is an implementation of the Skiplist data structure
+// Most of the implementation is copied from Redis https://github.com/antirez/redis.
+// In addition, this implementation contains an optimized function SampleInRange
+// that randomly samples from a given range. According to the benchmarks,
+// SampleInRange is around 12% faster than the naive implementation.
+package skiplist
 
 import (
   "fmt"

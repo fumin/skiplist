@@ -1,18 +1,16 @@
 package main
 
 import (
-  "github.com/fumin/sortedset"
+  "github.com/fumin/skiplist"
 )
 
 type Int int
-
-// sortedset.Ordered interface
-func (i Int) Less(o sortedset.Ordered) bool {
+func (i Int) Less(o skiplist.Ordered) bool {
   return i < o.(Int)
 }
 
 func main() {
-  z := sortedset.New()
+  z := skiplist.New()
   for i := 0; i < 20; i++ {
     z.Add(Int(i))
   }
