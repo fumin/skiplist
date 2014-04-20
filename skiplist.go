@@ -177,6 +177,7 @@ func (z *Skiplist) Rem(ordered Ordered) bool {
 }
 
 // Range returns elements whose rank is between start and stop
+// Both arguments, start and stop are inclusive, and are 0 based.
 func (z *Skiplist) Range(start, stop int) (reply []Ordered) {
   if start > stop || start >= z.length {
     return nil
