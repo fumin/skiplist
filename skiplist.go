@@ -11,8 +11,8 @@ import (
   "sort"
 )
 
-// The Ordered interface should be implemented by types that wish to added into
-// a skiplist.
+// The Ordered interface should be implemented by types that wish to be added
+// into skiplists.
 type Ordered interface {
   // Less reports whether we are *strictly* less than other.
   Less(other Ordered) bool
