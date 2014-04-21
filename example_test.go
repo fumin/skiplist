@@ -1,14 +1,21 @@
-package skiplist
+package skiplist_test
 
 import (
 	"math/rand"
+
+	"github.com/fumin/skiplist"
 )
 
-var z *Skiplist = New()
+type Int int
+
+func (i Int) Less(j skiplist.Ordered) bool {
+	return i < j.(Int)
+}
 
 func ExampleSkiplist_Insert() {
 	rand.Seed(1)
 
+	z := skiplist.New()
 	for i := 0; i < 20; i++ {
 		z.Insert(Int(i))
 	}
