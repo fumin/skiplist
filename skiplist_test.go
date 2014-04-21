@@ -11,13 +11,13 @@ func (i Int) Less(j Ordered) bool {
   return i < j.(Int)
 }
 
-func TestAddRem(t *testing.T) {
+func TestInsertDelete(t *testing.T) {
   N := 1000
   fixture := make([]int, N)
   z := New()
   for i := 0; i < N; i++ {
     fixture[i] = i
-    z.Add(Int(i))
+    z.Insert(Int(i))
   }
   holes := make(map[int]bool) // holes record the gaps in fixture
 
@@ -32,11 +32,11 @@ func TestAddRem(t *testing.T) {
         j = N + i
       }
       fixture = insertInt(t, fixture, j)
-      z.Add(Int(j))
+      z.Insert(Int(j))
     } else {
       pos := rand.Intn(len(fixture))
       holes[fixture[pos]] = true
-      z.Rem(Int(fixture[pos]))
+      z.Delete(Int(fixture[pos]))
       fixture = removeAt(t, fixture, pos)
     }
 
@@ -180,7 +180,7 @@ func genFixtureAndSkiplist(N int) ([]int, *Skiplist) {
 
   z := New()
   for i := 0; i < len(fixture); i++ {
-    z.Add(Int(fixture[i]))
+    z.Insert(Int(fixture[i]))
   }
   return fixture, z
 }

@@ -38,7 +38,7 @@ func BenchmarkSampleInRange_Slow(b *testing.B) {
 func prepareSampleInRangeFixture(N, specCnt int) (*Skiplist, []RangeSpec, []int) {
   z := New()
   for i := 0; i < N; i++ {
-    z.Add(Int(rand.Intn(N)))
+    z.Insert(Int(rand.Intn(N)))
   }
 
   specs := make([]RangeSpec, specCnt)

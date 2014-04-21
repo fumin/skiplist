@@ -82,8 +82,8 @@ func (z *Skiplist) Cardinality() int {
   return z.length
 }
 
-// Add adds an item to a Skiplist
-func (z *Skiplist) Add(o Ordered) {
+// Insert adds an item to a Skiplist
+func (z *Skiplist) Insert(o Ordered) {
   update := make([]*skiplistNode, MaxLevel)
   rank := make([]int, MaxLevel)
   x := z.head
@@ -138,9 +138,9 @@ func (z *Skiplist) Add(o Ordered) {
   z.length++
 }
 
-// Rem removes an element from the Skiplist.
-// If the removal is successful, Rem returns true, otherwise, false.
-func (z *Skiplist) Rem(ordered Ordered) bool {
+// Delete removes an element from the Skiplist.
+// If the removal is successful, Delete returns true, otherwise, false.
+func (z *Skiplist) Delete(ordered Ordered) bool {
   update := make([]*skiplistNode, MaxLevel)
   x := z.head
   for i := z.level-1; i >= 0; i-- {
@@ -446,7 +446,12 @@ func (z *Skiplist) PrintDebug() {
 
   for i := z.level-1; i >= 0; i-- {
     for node := z.head; node != nil; node = node.level[i].forward {
-      fmt.Printf("%2d", node.ordered)
+      if node == z.head {
+        fmt.Printf("head")
+      } else {
+        fmt.Printf("%2d", node.ordered)
+      }
+
       for j := 1; j < node.level[i].span; j++ {
         fmt.Printf("__")
       }
