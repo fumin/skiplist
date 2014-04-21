@@ -83,7 +83,7 @@ func (z *Skiplist) Cardinality() int {
 }
 
 // Insert adds an item to a Skiplist
-func (z *Skiplist) Insert(o Ordered) {
+func (z *Skiplist) Insert(ordered Ordered) {
 	update := make([]*skiplistNode, MaxLevel)
 	rank := make([]int, MaxLevel)
 	x := z.head
@@ -94,7 +94,7 @@ func (z *Skiplist) Insert(o Ordered) {
 			rank[i] = rank[i+1]
 		}
 
-		for x.level[i].forward != nil && x.level[i].forward.ordered.Less(o) {
+		for x.level[i].forward != nil && x.level[i].forward.ordered.Less(ordered) {
 			rank[i] += x.level[i].span
 			x = x.level[i].forward
 		}
@@ -110,7 +110,7 @@ func (z *Skiplist) Insert(o Ordered) {
 		}
 		z.level = level
 	}
-	x = &skiplistNode{ordered: o, level: make([]skiplistLevel, level)}
+	x = &skiplistNode{ordered: ordered, level: make([]skiplistLevel, level)}
 	for i := 0; i < level; i++ {
 		x.level[i].forward = update[i].level[i].forward
 		update[i].level[i].forward = x
