@@ -4,10 +4,11 @@ import (
 	"math/rand"
 )
 
+var z *Skiplist = New()
+
 func ExampleAdd() {
 	rand.Seed(1)
 
-	z := New()
 	for i := 0; i < 20; i++ {
 		z.Insert(Int(i))
 	}
