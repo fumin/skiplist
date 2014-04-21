@@ -6,7 +6,7 @@ import (
 
 var z *Skiplist = New()
 
-func ExampleAdd() {
+func ExampleSkiplist_Insert() {
 	rand.Seed(1)
 
 	for i := 0; i < 20; i++ {
