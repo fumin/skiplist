@@ -20,7 +20,6 @@ func ExampleSkiplist_Insert() {
 		z.Insert(Int(i))
 	}
 	z.PrintDebug()
-
 	// Output:
 	// length: 20, level: 5
 	// head____________ 6________________________
