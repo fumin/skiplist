@@ -3,7 +3,8 @@
 // For example, the function Range returns elements by their indices, and the
 // function RangeByScore returns elements whose score lie within an interval.
 // In fact, most of the actual implementation is copied from Redis https://github.com/antirez/redis.
-// The unique function of this package though, is SampleInRange which is an
+//
+// The unique feature of this package though, is SampleInRange which is an
 // optimized way of randomly sampling elements from a given range. According to
 // the benchmarks, SampleInRange is around 12% faster than the naive
 // implementation.
